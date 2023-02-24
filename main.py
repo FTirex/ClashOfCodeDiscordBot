@@ -6,8 +6,8 @@ from nextcord import SlashOption, Interaction, Embed, Colour, Color
 import nextcord
 from nextcord.ext import commands
 
-intents = nextcord.Intents.all()
-bot = commands.Bot(command_prefix='/', intents=intents)
+bot = commands.Bot(command_prefix='.')
+
 async def send(
     interaction: Interaction, 
     message: str, 
@@ -62,10 +62,10 @@ async def calculate_score(
             time_seconds += int(time_part[:-1]) * 60
 
     if time_seconds < 0 or time_seconds > 900:
-        raise ValueError("time_given should be between 0 and 15 minutes (900 seconds).")
+        await send(interaction=inter, message="time_given should be between 0 and 15 minutes (900 seconds).")
 
     if progress_percent < 0 or progress_percent > 100:
-        raise ValueError("progress_percent should be between 0 and 100.")
+        await send(interaction=inter, message="progress_percent should be between 0 and 100.")
     
     if time_seconds == 0:
         score = 0
@@ -82,113 +82,5 @@ async def on_ready():
     print('Connected')
     print(bot.user.name)
     print(bot.user.id)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 bot.run('')
