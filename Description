@@ -1,0 +1,19 @@
+calculate_score is a function that takes four inputs: player_name (a string), 
+
+time_given (a string representing a time in minutes and seconds), 
+
+progress_percent (a float between 0 and 100), and rank (an integer between 1 and 15).
+
+The function converts time_given into the total number of seconds and checks that it is between 0 and 900 seconds (15 minutes). 
+If time_given is outside this range, it raises a ValueError.
+
+The function also checks that progress_percent is between 0 and 100. If it is not, it raises a ValueError.
+
+Then the function calculates the score for the round using the formula:
+
+score = int(1000.0 / time_seconds * progress_percent * (16 - rank) / 15)
+
+If time_given is 0, the score is 0. Finally, the function returns a string that says "The score for {player_name}'s round is {score}." If an error occurs, the function returns an error message.
+
+
+
