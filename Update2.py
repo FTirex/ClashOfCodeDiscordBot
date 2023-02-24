@@ -1,7 +1,10 @@
-import colorama
+# + Slash Command
+# + Player Selection
+# + Send Errors
+# + Embed(color, title, message)
+
 from colorama import Fore
 from typing import Any
-import asyncio
 from nextcord import SlashOption, Interaction, Embed, Colour, Color
 import nextcord
 from nextcord.ext import commands
@@ -33,11 +36,12 @@ async def send(
 )
 async def calculate_score(
     inter: Interaction,
-    player_name: str=SlashOption(
-        name='player_name',
+    player_name: nextcord.Member = SlashOption(
+        name='player',
         description='put the player name',
         required=True,
     ),
+
     time_given: str=SlashOption(
         name='time_given',
         description='put the time given',
@@ -82,5 +86,6 @@ async def on_ready():
     print('Connected')
     print(bot.user.name)
     print(bot.user.id)
+
 
 bot.run('')
